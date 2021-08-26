@@ -65,17 +65,6 @@ include("overview.php");
 
 }
 
-if(isset($_GET['insertUsers'])){
-
-include("insert_users.php");
-
-}
-
-if(isset($_GET['viewUsers'])){
-
-include("view_users.php");
-
-}
 
 if(isset($_GET['insertStaff'])){
 
@@ -155,11 +144,6 @@ include("view_labor_salary.php");
 
 }
 
-if(isset($_GET['viewDonations'])){
-
-include("view_donations.php");
-
-}
 
 ?>
 

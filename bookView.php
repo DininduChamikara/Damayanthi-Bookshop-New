@@ -48,8 +48,8 @@
  <th>NO</th>  
 <th>Name</th> 
 <th>Price</th>
-<th>Description</th>
 <th>Availability</th>
+<th>Description</th>
 <th>Image</th>
 <th>Edit</th>
 <th>Delete</th>

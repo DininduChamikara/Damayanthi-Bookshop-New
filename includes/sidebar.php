@@ -76,33 +76,7 @@
 
 </li><!-- li Ends -->
 
-<li><!-- li Starts -->
 
-<a href="#" data-toggle="collapse" data-target="#donations">
-
-<i class="fa fa-fw fa-money"></i> Donations
-
-<i class="fa fa-fw fa-caret-down"></i>
-
-
-</a>
-
-<ul id="donations" class="collapse">
-
-<li>
-<a href="index.php?insertUsers"> Add Donations </a>
-</li>
-
-<li>
-<a href="index.php?viewUsers"> View Donations </a>
-</li>
-
-
-
-
-</ul>
-
-</li><!-- li Ends -->
 
 
 <li><!-- li Starts -->
