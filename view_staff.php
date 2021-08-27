@@ -89,7 +89,7 @@ $i++;
 <td><?php echo $username; ?></td>
 
 <td width=120px; >
-<img class="center_image" width=100px height=100px src="uploads/<?=$images?>">
+<img class="center_image" width=100px height=100px src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row_pro['image_url']); ?>">
 </td>
 
 <td>
