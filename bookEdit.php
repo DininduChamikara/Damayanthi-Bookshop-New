@@ -187,6 +187,11 @@ $availability = $row_pro['availability'];
      $tmp_name = $_FILES['bimage']['tmp_name'];
      $error = $_FILES['bimage']['error'];
 
+    $fileName = basename($_FILES["bimage"]["name"]);
+    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+    $image = $_FILES['bimage']['tmp_name'];
+    $imgContent = addslashes((file_get_contents($image)));
+
         
         if(!preg_match("/^(?!0+(?:\.0+)?$)[0-9]+(?:\.[0-9]+)?$/",$price)) {
             echo "<script>alert('Invalid price input.')</script>";
@@ -206,15 +211,15 @@ $availability = $row_pro['availability'];
                     $allowed_exs = array("jpg", "jpeg", "png");
         
                     if(in_array($img_ex_lc, $allowed_exs)){
-                        $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-                        $img_upload_path = 'uploads/'.$new_img_name;
-                        move_uploaded_file($tmp_name, $img_upload_path);
+                        // $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+                        // $img_upload_path = 'uploads/'.$new_img_name;
+                        // move_uploaded_file($tmp_name, $img_upload_path);
         
                         
                         // Insert into database
-                        $insert_book = "update book set book_name='$bookname', book_price='$price',description='$description',availability='$availability', image_url='$new_img_name' where id= '$edit_id'";
+                        $update_book = "update book set book_name='$bookname', book_price='$price',description='$description',availability='$availability', image_url='$imgContent' where id= '$edit_id'";
         
-                        $run_staff = mysqli_query($Con, $insert_book);
+                        $run_staff = mysqli_query($Con, $update_book);
                     
                         if ($run_staff) {
                             echo "<script> alert('Book Details updated successfully ')</script>";

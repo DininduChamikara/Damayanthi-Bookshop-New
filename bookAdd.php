@@ -172,11 +172,16 @@
      $description = $_POST['description'];
      $availability = $_POST['availability'];
 
-
+////////
      $img_name = $_FILES['bimage']['name'];
      $img_size = $_FILES['bimage']['size'];
      $tmp_name = $_FILES['bimage']['tmp_name'];
      $error = $_FILES['bimage']['error'];
+////////
+    $fileName = basename($_FILES["bimage"]["name"]);
+    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+    $image = $_FILES['bimage']['tmp_name'];
+    $imgContent = addslashes((file_get_contents($image)));
 
     
     if(!preg_match("/^(?!0+(?:\.0+)?$)[0-9]+(?:\.[0-9]+)?$/",$price)) {
@@ -196,14 +201,14 @@
                 $allowed_exs = array("jpg", "jpeg", "png");
    
                 if(in_array($img_ex_lc, $allowed_exs)){
-                    $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-                    $img_upload_path = 'uploads/'.$new_img_name;
-                    move_uploaded_file($tmp_name, $img_upload_path);
+                    // $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+                    // $img_upload_path = 'uploads/'.$new_img_name;
+                    // move_uploaded_file($tmp_name, $img_upload_path);
    
                    
                     // Insert into database
                     $insert_book = "insert into book (book_name,book_price,description,availability, image_url)"
-                    . " values ('$bookname','$price','$description','$availability','$new_img_name')";
+                    . " values ('$bookname','$price','$description','$availability','$imgContent')";
     
                    $run_staff = mysqli_query($Con, $insert_book);
                

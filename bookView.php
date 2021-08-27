@@ -72,7 +72,7 @@ while($row_pro=mysqli_fetch_array($run_pro)){
 $bookname = $row_pro['book_name'];
 $price = $row_pro['book_price'];
 $description = $row_pro['description'];
-$images = $row_pro['image_url'];
+// $images = $row_pro['image_url'];
 $availability = $row_pro['availability'];
 $id = $row_pro['id'];
 $i++;
@@ -87,9 +87,10 @@ $i++;
 <td><?php echo $price; ?></td>
 <td><?php echo $availability; ?></td>
 <td><?php echo $description; ?></td>
+<td><?php echo $description; ?></td>
 
 <td width=120px; >
-<img class="center_image" width=100px height=100px src="uploads/<?=$images?>">
+<img class="center_image" width=100px height=100px src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row_pro['image_url']); ?>">
 </td>
 
 
