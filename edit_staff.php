@@ -308,6 +308,12 @@ $id = $row_pro['staffId'];
      $tmp_name = $_FILES['simage']['tmp_name'];
      $error = $_FILES['simage']['error'];
 
+     ////////
+    $fileName = basename($_FILES["simage"]["name"]);
+    $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+    $image = $_FILES['simage']['tmp_name'];
+    $imgContent = addslashes((file_get_contents($image)));
+
      //////////////////////////
      if (!preg_match("/^[a-zA-Z-' ]*$/",$firstname)) {
         echo "<script>alert('Only letters and white space allowed for First Name.')</script>";
@@ -346,13 +352,13 @@ $id = $row_pro['staffId'];
                $allowed_exs = array("jpg", "jpeg", "png");
     
                if(in_array($img_ex_lc, $allowed_exs)){
-                   $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-                   $img_upload_path = 'uploads/'.$new_img_name;
-                   move_uploaded_file($tmp_name, $img_upload_path);
+                //    $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+                //    $img_upload_path = 'uploads/'.$new_img_name;
+                //    move_uploaded_file($tmp_name, $img_upload_path);
     
                   
                    // Insert into database
-                   $insert_staff = "update  staff set firstname='$firstname',lastname='$lastname',name_with_init='$name_with_init',bdate='$bdate',snic='$snic',gender='$gender',ContactNo='$contact',Address='$address',email='$email',post='$post',image_url='$new_img_name',username='$username',password='$password' where staffId = '$edit_id'";
+                   $insert_staff = "update  staff set firstname='$firstname',lastname='$lastname',name_with_init='$name_with_init',bdate='$bdate',snic='$snic',gender='$gender',ContactNo='$contact',Address='$address',email='$email',post='$post',image_url='$imgContent',username='$username',password='$password' where staffId = '$edit_id'";
     
                   $run_staff = mysqli_query($Con, $insert_staff);
               

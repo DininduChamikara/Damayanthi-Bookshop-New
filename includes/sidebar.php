@@ -49,14 +49,10 @@
 
 </button><!-- navbar-ex1-collapse Ends -->
 
-<a class="navbar-brand" href="index.php?overview" >SAMADHI CHILDREN HOME</a>
+<a class="navbar-brand" href="index.php?overview" >DAMAYANTHI BOOKSHOP - ADMIN</a>
 
 
 </div><!-- navbar-header Ends -->
-
-
-
-
 
 
 <div class="collapse navbar-collapse navbar-ex1-collapse"><!-- collapse navbar-collapse navbar-ex1-collapse Starts -->
