@@ -156,6 +156,57 @@
 
 </li><!-- li Ends -->
 
+<!-- ////////////////////////////////////////////// -->
+<li><!-- li Starts -->
+
+<a href="#" data-toggle="collapse" data-target="#customer">
+
+<i class="fa fa-fw fa-address-card-o"></i> Customer
+
+<i class="fa fa-fw fa-caret-down"></i>
+
+
+</a>
+
+<ul id="customer" class="collapse">
+
+<li>
+<a href="index.php?insertCustomer"> Add Customer </a>
+</li>
+
+<li>
+<a href="index.php?viewCustomer"> View Customer </a>
+</li>
+
+</ul>
+
+</li><!-- li Ends -->
+
+<li><!-- li Starts -->
+
+<a href="#" data-toggle="collapse" data-target="#publication">
+
+<i class="fa fa-fw fa-bookmark-o"></i> Publications
+
+<i class="fa fa-fw fa-caret-down"></i>
+
+
+</a>
+
+<ul id="publication" class="collapse">
+
+<li>
+<a href="index.php?insertPublication"> Add Publications </a>
+</li>
+
+<li>
+<a href="index.php?viewPublication"> View Publications </a>
+</li>
+
+</ul>
+
+</li><!-- li Ends -->
+<!-- ////////////////////////////////////////////// -->
 
 <li><!-- li Starts -->
 

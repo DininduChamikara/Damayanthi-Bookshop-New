@@ -363,7 +363,7 @@ $id = $row_pro['staffId'];
                   $run_staff = mysqli_query($Con, $insert_staff);
               
                   if ($run_staff) {
-                      echo "<script> alert('child Added successfully ')</script>";
+                      echo "<script> alert('Edit staff member successfully ')</script>";
                       echo "<script> window.open('index.php?viewStaff ','_self')</script>";
                   }
     

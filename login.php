@@ -41,7 +41,7 @@ include("includes/db.php");
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" method="POST">
-					<!-- <h2>SAMADHI CHILDREN HOME</h2> -->
+					
 					<span class="login100-form-title p-b-34">
 						Account Login
 					</span>
@@ -78,7 +78,7 @@ include("includes/db.php");
 					</div>
 				</form>
 
-				<div class="login100-more" style="background-image: url('login_design/images/bg-02.jpg');"></div>
+				<div class="login100-more" style="background-image: url('login_design/images/bg-03.jpeg');"></div>
 			</div>
 		</div>
 	</div>
