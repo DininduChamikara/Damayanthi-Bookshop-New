@@ -13,6 +13,8 @@ $run_pro = mysqli_query($Con,$get_pro);
 $row_pro = mysqli_fetch_array($run_pro);
 
 $bookname = $row_pro['book_name'];
+$category = $row_pro['category'];
+$author = $row_pro['author'];
 $price = $row_pro['book_price'];
 $description = $row_pro['description'];
 $availability = $row_pro['availability'];
@@ -90,6 +92,37 @@ $availability = $row_pro['availability'];
                                 </div><!--form-group Ends-->
 
                                 <!--Dinindu Add name with initials end-->
+
+                                <div class="form-group"><!--form-group starts-->
+
+                                    <label class="col-md-3 control-label">Category</label>
+
+                                    <div class="col-md-6"><!--col-md-6 starts-->
+
+                                        <select name="category" id="category" class="form-control">  
+                                            <option value="Classic">Classic</option>  
+                                            <option value="Comic">Comic</option>
+                                            <option value="Sci-Fi">Sci-Fi</option>
+                                            <option value="Short Story">Short Story</option>
+                                            <option value="Biographies">Biographies</option>
+                                            <option value="Historical">Historical</option>
+                                        </select>      
+                                        
+                                    </div><!--col-md-6 Ends-->
+
+                                </div><!--form-group Ends-->
+
+                                <div class="form-group"><!--form-group starts-->
+
+                                    <label class="col-md-3 control-label">Author</label>
+
+                                    <div class="col-md-6"><!--col-md-6 starts-->
+
+                                        <input type="text" name="author" id="author" class="form-control" value="<?php echo $author?>" required>
+
+                                    </div><!--col-md-6 Ends-->
+
+                                </div><!--form-group Ends-->
 
 
                                 <div class="form-group"><!--form-group starts-->
@@ -178,6 +211,8 @@ $availability = $row_pro['availability'];
     if (isset($_POST['editbook']) && isset($_FILES['bimage'])) {
 
      $bookname = $_POST['bname'];
+     $category = $_POST['category'];
+     $author = $_POST['author'];
      $price = $_POST['bprice'];
      $description = $_POST['description'];
      $availability =$_POST['availability'];
@@ -193,44 +228,46 @@ $availability = $row_pro['availability'];
     $imgContent = addslashes((file_get_contents($image)));
 
         
-        if(!preg_match("/^(?!0+(?:\.0+)?$)[0-9]+(?:\.[0-9]+)?$/",$price)) {
-            echo "<script>alert('Invalid price input.')</script>";
-            echo "<script> window.open('index.php?editBook=$edit_id','_self')</script>";       
-        }
+    if(!preg_match("/^(?!0+(?:\.0+)?$)[0-9]+(?:\.[0-9]+)?$/",$price)) {
+        echo "<script>alert('Invalid price input.')</script>";
+        echo "<script> window.open('index.php?editBook=$edit_id','_self')</script>";       
+    }
 
-        else{
-            if($error === 0){
-                // maximum 3MB images
-                if($img_size > 1024*1024*3){
-                    $em = "Sorry, image is too large";
-                    
-                }else{
-                    $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-                    $img_ex_lc = strtolower($img_ex);
-        
-                    $allowed_exs = array("jpg", "jpeg", "png");
-        
-                    if(in_array($img_ex_lc, $allowed_exs)){
-                        // $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-                        // $img_upload_path = 'uploads/'.$new_img_name;
-                        // move_uploaded_file($tmp_name, $img_upload_path);
-        
-                        
-                        // Insert into database
-                        $update_book = "update book set book_name='$bookname', book_price='$price',description='$description',availability='$availability', image_url='$imgContent' where id= '$edit_id'";
-        
-                        $run_staff = mysqli_query($Con, $update_book);
-                    
-                        if ($run_staff) {
-                            echo "<script> alert('Book Details updated successfully ')</script>";
-                            echo "<script> window.open('index.php?viewBook','_self')</script>";
-                        }
+    ////////// have to add input validation for auther
+
+    else{
+        if($error === 0){
+            // maximum 3MB images
+            if($img_size > 1024*1024*3){
+                $em = "Sorry, image is too large";
+                
+            }else{
+                $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+                $img_ex_lc = strtolower($img_ex);
     
-        
-                    }else{
-                        $em = "You can't upload files of this type";
+                $allowed_exs = array("jpg", "jpeg", "png");
+    
+                if(in_array($img_ex_lc, $allowed_exs)){
+                    // $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
+                    // $img_upload_path = 'uploads/'.$new_img_name;
+                    // move_uploaded_file($tmp_name, $img_upload_path);
+    
+                    
+                    // Insert into database
+                    $update_book = "update book set book_name='$bookname',category='$category',author='$author',book_price='$price',description='$description',availability='$availability', image_url='$imgContent' where id= '$edit_id'";
+    
+                    $run_staff = mysqli_query($Con, $update_book);
+                
+                    if ($run_staff) {
+                        echo "<script> alert('Book Details updated successfully ')</script>";
+                        echo "<script> window.open('index.php?viewBook','_self')</script>";
                     }
+
+    
+                }else{
+                    $em = "You can't upload files of this type";
                 }
+            }
 
             echo "<script>alert('$em')</script>";
 
@@ -238,7 +275,7 @@ $availability = $row_pro['availability'];
             $em = "unknown error occurred!";
         }
 
-        }
-    
     }
+
+}
     ?>

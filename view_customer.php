@@ -9,7 +9,7 @@
  
 <li class="active" >
 
-<i class="fa fa-dashboard"></i> Book / View Books
+<i class="fa fa-dashboard"></i> Customer / View Customer
 
 </li>
 
@@ -29,7 +29,7 @@
 
 <h3 class="panel-title" ><!-- panel-title Starts -->
 
-<i class="fa fa-money fa-fw" ></i> View Book
+<i class="fa fa-money fa-fw" ></i> View Customer
 
 </h3><!-- panel-title Ends -->
 
@@ -45,12 +45,11 @@
 <thead>
 
 <tr>
- <th>NO</th>  
-<th>Name</th> 
-<th>Price</th>
-<th>Availability</th>
-<th>Description</th>
-<th>Image</th>
+ <th>NO</th> 
+ <th>First Name</th> 
+ <th>Last Name</th>  
+<th>Email Address</th>
+<th>Contact</th>
 <th>Edit</th>
 <th>Delete</th>
 </tr>
@@ -63,40 +62,32 @@
 
 $i = 0;
 
-$get_pro = "select * from book";
+$get_pro = "select * from customer";
 
 $run_pro = mysqli_query($Con,$get_pro);
 
 while($row_pro=mysqli_fetch_array($run_pro)){
 
-$bookname = $row_pro['book_name'];
-$price = $row_pro['book_price'];
-$description = $row_pro['description'];
-// $images = $row_pro['image_url'];
-$availability = $row_pro['availability'];
+$fname = $row_pro['firstName'];
+$lname = $row_pro['lastName'];
+$email = $row_pro['email'];
+$contact = $row_pro['mobileNum'];
 $id = $row_pro['id'];
 $i++;
-
 
 ?>
 
 <tr>
 
 <td><?php echo $i; ?></td>
-<td><?php echo $bookname; ?></td>
-<td><?php echo $price; ?></td>
-<td><?php echo $availability; ?></td>
-<td><?php echo $description; ?></td>
-
-
-<td width=120px; >
-<img class="center_image" width=100px height=100px src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row_pro['image_url']); ?>">
-</td>
-
+<td><?php echo $fname; ?></td>
+<td><?php echo $lname; ?></td>
+<td><?php echo $email; ?></td>
+<td><?php echo $contact; ?></td>
 
 <td>
 
-<a href="index.php?editBook=<?php echo $id; ?>">
+<a href="index.php?editCustomer=<?php echo $id; ?>">
 
 <i class="fa fa-pencil"> </i> Edit
 
@@ -105,7 +96,7 @@ $i++;
 </td>
 <td>
 
-<a href="index.php?deleteBook=<?php echo $id; ?>">
+<a href="index.php?deleteCustomer=<?php echo $id; ?>">
 
 <i class="fa fa-trash-o"> </i> Delete
 

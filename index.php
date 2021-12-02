@@ -90,6 +90,58 @@ include("delete_staff.php");
 
 }
 
+///////////
+if(isset($_GET['insertCustomer'])){
+
+    include("add_customer.php");
+    
+}
+
+if(isset($_GET['viewCustomer'])){
+
+    include("view_customer.php");
+    
+}
+
+if(isset($_GET['editCustomer'])){
+
+    include("edit_customer.php");
+    
+}
+
+if(isset($_GET['deleteCustomer'])){
+
+    include("delete_customer.php");
+    
+}
+
+
+if(isset($_GET['insertPublication'])){
+
+    include("add_publication.php");
+    
+}
+
+if(isset($_GET['viewPublication'])){
+
+    include("view_publication.php");
+    
+}
+
+if(isset($_GET['editPublication'])){
+
+    include("edit_publication.php");
+    
+}
+
+if(isset($_GET['deletePublication'])){
+
+    include("delete_publication.php");
+    
+}
+
+///////////
+
 if(isset($_GET['insertLabors'])){
 
 include("add_labor.php");

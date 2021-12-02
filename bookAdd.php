@@ -73,6 +73,40 @@
 
                                 </div><!--form-group Ends-->
 
+
+                                <div class="form-group"><!--form-group starts-->
+
+                                    <label class="col-md-3 control-label">Category</label>
+
+                                    <div class="col-md-6"><!--col-md-6 starts-->
+
+                                        <select name="category" id="category" class="form-control">  
+                                            <option value="Classic">Classic</option>  
+                                            <option value="Comic">Comic</option>
+                                            <option value="Sci-Fi">Sci-Fi</option>
+                                            <option value="Short Story">Short Story</option>
+                                            <option value="Biographies">Biographies</option>
+                                            <option value="Historical">Historical</option>
+                                        </select>      
+                                        
+                                    </div><!--col-md-6 Ends-->
+
+                                </div><!--form-group Ends-->
+
+
+                                <div class="form-group"><!--form-group starts-->
+
+                                    <label class="col-md-3 control-label">Author</label>
+
+                                    <div class="col-md-6"><!--col-md-6 starts-->
+
+                                        <input type="text" name="author" id="author" class="form-control" required>
+
+                                    </div><!--col-md-6 Ends-->
+
+                                </div><!--form-group Ends-->
+
+
                                 <!--Dinindu Add name with initials end-->
 
 
@@ -172,6 +206,9 @@
      $description = $_POST['description'];
      $availability = $_POST['availability'];
 
+     $category = $_POST['category'];
+     $author = $_POST['author'];
+
 ////////
      $img_name = $_FILES['bimage']['name'];
      $img_size = $_FILES['bimage']['size'];
@@ -183,32 +220,24 @@
     $image = $_FILES['bimage']['tmp_name'];
     $imgContent = addslashes((file_get_contents($image)));
 
-    
-    if(!preg_match("/^(?!0+(?:\.0+)?$)[0-9]+(?:\.[0-9]+)?$/",$price)) {
-        echo "<script>alert('Invalid input.')</script>";
-        echo "<script> window.open('index.php?insertBook','_self')</script>";       
-    }
-    else{
-        if($error === 0){
-            // maximum image size checker maximum = 3MB
-            if($img_size > 1024*1024*3){
-                $em = "Sorry, image is too large";
+
+    if($error === 0){
+        // maximum image size checker maximum = 3MB
+        if($img_size > 1024*1024*3){
+            $em = "Sorry, image is too large";
                 
-            }else{
-                $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
-                $img_ex_lc = strtolower($img_ex);
+        }else{
+            $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+            $img_ex_lc = strtolower($img_ex);
    
-                $allowed_exs = array("jpg", "jpeg", "png");
+            $allowed_exs = array("jpg", "jpeg", "png");
    
-                if(in_array($img_ex_lc, $allowed_exs)){
-                    // $new_img_name = uniqid("IMG-", true).'.'.$img_ex_lc;
-                    // $img_upload_path = 'uploads/'.$new_img_name;
-                    // move_uploaded_file($tmp_name, $img_upload_path);
+            if(in_array($img_ex_lc, $allowed_exs)){
    
                    
                     // Insert into database
-                    $insert_book = "insert into book (book_name,book_price,description,availability, image_url)"
-                    . " values ('$bookname','$price','$description','$availability','$imgContent')";
+                    $insert_book = "insert into book (book_name,category,author,book_price,description,availability, image_url)"
+                    . " values ('$bookname','$category','$author','$price','$description','$availability','$imgContent')";
     
                    $run_staff = mysqli_query($Con, $insert_book);
                
@@ -230,7 +259,4 @@
         }
     }
 
-    } else{
-
-    }
     ?>

@@ -9,7 +9,7 @@
  
 <li class="active" >
 
-<i class="fa fa-dashboard"></i> Book / View Books
+<i class="fa fa-dashboard"></i> Publication / View Publications
 
 </li>
 
@@ -29,7 +29,7 @@
 
 <h3 class="panel-title" ><!-- panel-title Starts -->
 
-<i class="fa fa-money fa-fw" ></i> View Book
+<i class="fa fa-money fa-fw" ></i> View Publication
 
 </h3><!-- panel-title Ends -->
 
@@ -47,9 +47,6 @@
 <tr>
  <th>NO</th>  
 <th>Name</th> 
-<th>Price</th>
-<th>Availability</th>
-<th>Description</th>
 <th>Image</th>
 <th>Edit</th>
 <th>Delete</th>
@@ -63,17 +60,13 @@
 
 $i = 0;
 
-$get_pro = "select * from book";
+$get_pro = "select * from publication";
 
 $run_pro = mysqli_query($Con,$get_pro);
 
 while($row_pro=mysqli_fetch_array($run_pro)){
 
-$bookname = $row_pro['book_name'];
-$price = $row_pro['book_price'];
-$description = $row_pro['description'];
-// $images = $row_pro['image_url'];
-$availability = $row_pro['availability'];
+$publication_name = $row_pro['name'];
 $id = $row_pro['id'];
 $i++;
 
@@ -83,20 +76,17 @@ $i++;
 <tr>
 
 <td><?php echo $i; ?></td>
-<td><?php echo $bookname; ?></td>
-<td><?php echo $price; ?></td>
-<td><?php echo $availability; ?></td>
-<td><?php echo $description; ?></td>
+<td><?php echo $publication_name; ?></td>
 
 
 <td width=120px; >
-<img class="center_image" width=100px height=100px src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row_pro['image_url']); ?>">
+<img class="center_image" width=100px height=100px src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row_pro['image']); ?>">
 </td>
 
 
 <td>
 
-<a href="index.php?editBook=<?php echo $id; ?>">
+<a href="index.php?editPublication=<?php echo $id; ?>">
 
 <i class="fa fa-pencil"> </i> Edit
 
@@ -105,7 +95,7 @@ $i++;
 </td>
 <td>
 
-<a href="index.php?deleteBook=<?php echo $id; ?>">
+<a href="index.php?deletePublication=<?php echo $id; ?>">
 
 <i class="fa fa-trash-o"> </i> Delete
 

@@ -67,7 +67,7 @@ $allbook = $row_book['count(id)'];
 
 <div class="col-xs-3"><!-- col-xs-3 Starts -->
 
-<i class="fa fa-money fa-5x"> </i>
+<i class="fa fa-users fa-5x"> </i>
 
 </div><!-- col-xs-3 Ends -->
 
@@ -83,7 +83,8 @@ $allbook = $row_book['count(id)'];
 
 </div><!-- panel-heading Ends -->
 
-<a href="index.php?viewUsers">
+
+<a href="index.php?viewCustomer">
 
 <div class="panel-footer"><!-- panel-footer Starts -->
 
@@ -112,7 +113,7 @@ $allbook = $row_book['count(id)'];
 
 <div class="col-xs-3"><!-- col-xs-3 Starts -->
 
-<i class="fa fa-child fa-5x"> </i>
+<i class="fa fa-book fa-5x"> </i>
 
 </div><!-- col-xs-3 Ends -->
 
